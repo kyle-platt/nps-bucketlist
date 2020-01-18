@@ -1,0 +1,15 @@
+{
+  "short_name": "NPS Bucketlist",
+  "name": "Explore America's Beauties. Journal Your Experiences.",
+  "icons": [
+    {
+      "src": "nps-icon-square.png",
+      "type": "image/png",
+      "sizes": "200x200"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
