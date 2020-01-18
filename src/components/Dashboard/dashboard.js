@@ -16,6 +16,4 @@ function Dashboard() {
   );
 }
 
-const condition = authUser => !!authUser;
-
-export default withAuthorization(condition)(Dashboard);
+export default withAuthorization()(Dashboard);

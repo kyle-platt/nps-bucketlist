@@ -17,6 +17,4 @@ const SettingsPage = () => (
   </AuthUserContext.Consumer>
 );
 
-const condition = authUser => !!authUser;
-
-export default withAuthorization(condition)(SettingsPage);
+export default withAuthorization()(SettingsPage);
