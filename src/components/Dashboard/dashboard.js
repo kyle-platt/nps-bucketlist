@@ -1,12 +1,17 @@
 import React from 'react';
-import SignOutButton from '../SignOut/signOut';
 import { withAuthorization } from '../Session/session';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 function Dashboard() {
   return (
     <div className="app-background">
       <h1>Bucketlist</h1>
-      <SignOutButton />
+      <Link to={ROUTES.SETTINGS}>
+        <button type="button">
+          Settings
+        </button>
+      </Link>
     </div>
   );
 }
