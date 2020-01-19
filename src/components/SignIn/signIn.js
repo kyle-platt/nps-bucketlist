@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { SignUpLink } from '../SignUp/signUp';
+import { withoutAuthorization } from '../Session/session';
 import { PasswordForgetLink } from '../PasswordForget/passwordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
@@ -88,5 +89,5 @@ const SignInLink = () => (
 
 const SignInForm = withRouter(withFirebase(SignInFormBase));
 
-export default SignInPage;
+export default withoutAuthorization()(SignInPage);
 export { SignInForm, SignInLink };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withoutAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 
 function Landing() {
@@ -20,4 +21,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default withoutAuthorization()(Landing);

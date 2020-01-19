@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
+import { withoutAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 
 const PasswordForgetPage = () => (
   <div className="app-background">
+    <Link to={ROUTES.SIGN_IN}>back</Link>
     <h1>PasswordForget</h1>
     <PasswordForgetForm />
   </div>
@@ -63,6 +65,7 @@ const PasswordForgetLink = () => (
   <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
 );
 
-export default PasswordForgetPage;
 const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
+
+export default withoutAuthorization()(PasswordForgetPage);
 export { PasswordForgetForm, PasswordForgetLink };
