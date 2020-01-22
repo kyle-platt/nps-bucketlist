@@ -6,7 +6,7 @@ import {
 import './app.css'
 import LandingPage from '../Landing/landing';
 import SignUpPage from '../SignUp/signUp';
-import SignInPage from '../SignIn/signIn';
+import SignInPageContainer from '../SignIn/SignInPageContainer';
 import PasswordForgetPage from '../PasswordForget/passwordForget';
 import DashboardPage from '../Dashboard/dashboard';
 import SettingsPage from '../Settings/settings';
@@ -17,7 +17,7 @@ const App = () => (
   <Router>
     <Route exact path={ROUTES.LANDING} component={LandingPage} />
     <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-    <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+    <Route path={ROUTES.SIGN_IN} component={SignInPageContainer} />
     <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
     <Route path={ROUTES.DASHBOARD} component={DashboardPage} />
     <Route path={ROUTES.SETTINGS} component={SettingsPage} />

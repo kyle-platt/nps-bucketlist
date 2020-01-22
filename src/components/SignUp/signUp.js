@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
-import { SignInLink } from '../SignIn/signIn';
 import { withoutAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 
@@ -10,7 +9,9 @@ const SignUpPage = () => (
     <Link to={ROUTES.LANDING}>back</Link>
     <h1>Let's get you signed up</h1>
     <SignUpForm />
-    <SignInLink />
+    <p>
+      Already have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+    </p>
   </div>
 );
 
