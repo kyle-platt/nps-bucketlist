@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { withoutAuthorization } from '../Session/session';
 import { withFirebase } from '../Firebase';
@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-class SignInPageContainer extends Component {
+class SignInPageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...INITIAL_STATE };
