@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { withoutAuthorization } from '../Session/session';
 import { withFirebase } from '../Firebase';
+import { withoutAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 import SignInPageView from './SignInPageView';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   email: '',
   password: '',
   error: null,
@@ -20,8 +20,10 @@ class SignInPageContainer extends Component {
   handleSubmit = (event) => {
     const { email, password } = this.state;
     const { firebase, history } = this.props;
+    
+    event.preventDefault();
 
-    firebase.doSignInWithEmailAndPassword(email, password)
+    return firebase.doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
         history.push(ROUTES.DASHBOARD);
@@ -29,7 +31,6 @@ class SignInPageContainer extends Component {
       .catch(error => {
         this.setState({ error });
       });
-    event.preventDefault();
   };
 
   handleChange = (event) => {
@@ -53,7 +54,7 @@ class SignInPageContainer extends Component {
         error={error}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
-        isInvalid={this.isInvalid()}
+        isInvalid={this.isInvalid(email, password)}
         password={password}
       />
     );
@@ -61,3 +62,4 @@ class SignInPageContainer extends Component {
 }
 
 export default withoutAuthorization()(withRouter(withFirebase(SignInPageContainer)));
+export { SignInPageContainer as SignInPageContainerTest };
