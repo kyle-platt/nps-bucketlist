@@ -3,11 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { withoutAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
-import SignInPageView from './SignInPageView';
+import SignUpPageView from './SignUpPageView';
 
-export const INITIAL_STATE = {
+const INITIAL_STATE = {
   email: '',
-  password: '',
+  passwordOne: '',
+  passwordTwo: '',
   error: null,
 };
 
@@ -18,12 +19,12 @@ class SignInPageContainer extends React.Component {
   }
 
   handleSubmit = (event) => {
-    const { email, password } = this.state;
+    const { email, passwordOne } = this.state;
     const { firebase, history } = this.props;
-    
+
     event.preventDefault();
 
-    return firebase.doSignInWithEmailAndPassword(email, password)
+    return firebase.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
         history.push(ROUTES.DASHBOARD);
@@ -37,27 +38,30 @@ class SignInPageContainer extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  isInvalid = (email, password) => email === '' || password === '';
+  isInvalid = (email, passwordOne, passwordTwo) => (
+    email === '' || passwordOne === '' || passwordOne !== passwordTwo
+  );
 
   render() {
     const {
       email,
+      passwordOne,
+      passwordTwo,
       error,
-      password,
     } = this.state;
 
     return (
-      <SignInPageView
-        email={email}
-        error={error}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        isInvalid={this.isInvalid(email, password)}
-        password={password}
+      <SignUpPageView
+      email={email}
+      error={error}
+      handleChange={this.handleChange}
+      handleSubmit={this.handleSubmit}
+      isInvalid={this.isInvalid(email, passwordOne, passwordTwo)}
+      passwordOne={passwordOne}
+      passwordTwo={passwordTwo}
       />
     );
   }
 }
 
 export default withoutAuthorization()(withRouter(withFirebase(SignInPageContainer)));
-export { SignInPageContainer as SignInPageContainerTest };

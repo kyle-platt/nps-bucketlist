@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignOutButton Tests renders with some data 1`] = `
+<button
+  onClick={[Function]}
+  type="button"
+>
+  Sign Out
+</button>
+`;

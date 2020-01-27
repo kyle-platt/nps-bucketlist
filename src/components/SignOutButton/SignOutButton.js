@@ -8,3 +8,4 @@ const SignOutButton = ({ firebase }) => (
 );
 
 export default withFirebase(SignOutButton);
+export { SignOutButton as SignOutButtonTest };

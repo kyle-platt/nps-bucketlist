@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignOutButton from '../SignOut/signOut';
+import SignOutButton from '../SignOutButton/SignOutButton';
 import PasswordChangeForm from '../PasswordChange/passwordChange';
 import { AuthUserContext, withAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
