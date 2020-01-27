@@ -3,14 +3,17 @@ import renderer from 'react-test-renderer';
 import { SignOutButtonTest } from '../SignOutButton';
 
 describe('SignOutButton Tests', () => {
+    const defaultProps = {
+        firebase: {
+            doSignOut: () => {},
+        }
+    };
+
     it('renders with some data', () => {
-        const props = {
-            firebase: {
-                doSignOut: () => {},
-            }
-        };
         const tree = renderer.create(
-            <SignOutButtonTest {...props} />
+            <SignOutButtonTest
+                {...defaultProps}
+            />
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });

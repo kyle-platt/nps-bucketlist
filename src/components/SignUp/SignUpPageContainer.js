@@ -5,14 +5,14 @@ import { withoutAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 import SignUpPageView from './SignUpPageView';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
   error: null,
 };
 
-class SignInPageContainer extends React.Component {
+class SignUpPageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...INITIAL_STATE };
@@ -64,4 +64,5 @@ class SignInPageContainer extends React.Component {
   }
 }
 
-export default withoutAuthorization()(withRouter(withFirebase(SignInPageContainer)));
+export default withoutAuthorization()(withRouter(withFirebase(SignUpPageContainer)));
+export { SignUpPageContainer as SignUpPageContainerTest };

@@ -11,7 +11,7 @@ exports[`SignInPageView renders with an error 1`] = `
     back
   </a>
   <h1>
-    Let's sign you in
+    Let's get you signed up
   </h1>
   <form
     onSubmit={[Function]}
@@ -24,35 +24,36 @@ exports[`SignInPageView renders with an error 1`] = `
       value="info@test.com"
     />
     <input
-      name="password"
+      name="passwordOne"
       onChange={[Function]}
       placeholder="Password"
       type="password"
       value="123abc"
     />
-    <a
-      href="/pw-forget"
-      onClick={[Function]}
-    >
-      Forgot Password?
-    </a>
+    <input
+      name="passwordTwo"
+      onChange={[Function]}
+      placeholder="Confirm Password"
+      type="password"
+      value="123abc"
+    />
     <button
       disabled={false}
       type="submit"
     >
-      Sign In
+      Sign Up
     </button>
     <p>
       some error
     </p>
   </form>
   <p>
-    Don't have an account? 
+    Already have an account? 
     <a
-      href="/signup"
+      href="/signin"
       onClick={[Function]}
     >
-      Sign Up
+      Sign In
     </a>
   </p>
 </div>
@@ -69,7 +70,7 @@ exports[`SignInPageView renders with some data 1`] = `
     back
   </a>
   <h1>
-    Let's sign you in
+    Let's get you signed up
   </h1>
   <form
     onSubmit={[Function]}
@@ -82,32 +83,33 @@ exports[`SignInPageView renders with some data 1`] = `
       value="info@test.com"
     />
     <input
-      name="password"
+      name="passwordOne"
       onChange={[Function]}
       placeholder="Password"
       type="password"
       value="123abc"
     />
-    <a
-      href="/pw-forget"
-      onClick={[Function]}
-    >
-      Forgot Password?
-    </a>
+    <input
+      name="passwordTwo"
+      onChange={[Function]}
+      placeholder="Confirm Password"
+      type="password"
+      value="123abc"
+    />
     <button
       disabled={false}
       type="submit"
     >
-      Sign In
+      Sign Up
     </button>
   </form>
   <p>
-    Don't have an account? 
+    Already have an account? 
     <a
-      href="/signup"
+      href="/signin"
       onClick={[Function]}
     >
-      Sign Up
+      Sign In
     </a>
   </p>
 </div>

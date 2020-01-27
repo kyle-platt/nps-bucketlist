@@ -4,35 +4,35 @@ import { BrowserRouter } from 'react-router-dom';
 import SignInPageView from '../SignInPageView';
 
 describe('SignInPageView', () => {
+  const defaultProps = {
+    email: 'info@test.com',
+    error: null,
+    handleChange: () => {},
+    handleSubmit: () => {},
+    isInvalid: false,
+    password: '123abc',
+  };
+
   it('renders with some data', () => {
     const tree = renderer.create(
       <BrowserRouter>
-          <SignInPageView
-          email={'info@test.com'}
-          error={null}
-          handleChange={() => {}}
-          handleSubmit={() => {}}
-          isInvalid={false}
-          password={'123abc'}
-          />
+        <SignInPageView
+          {...defaultProps}
+        />
       </BrowserRouter> 
-      ).toJSON();
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
   
   it('renders with an error', () => {
       const tree = renderer.create(
-      <BrowserRouter>
-        <SignInPageView
-        email={'info@test.com'}
-        error={{ message: 'some error' }}
-        handleChange={() => {}}
-        handleSubmit={() => {}}
-        isInvalid={true}
-        password={'123abc'}
-        />
-      </BrowserRouter>
-        ).toJSON();
+        <BrowserRouter>
+          <SignInPageView
+            {...defaultProps}
+            error={{ message: 'some error' }}
+          />
+        </BrowserRouter>
+      ).toJSON();
       expect(tree).toMatchSnapshot();
     });
 });

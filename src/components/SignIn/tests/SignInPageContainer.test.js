@@ -12,7 +12,8 @@ const event = {
     },
     preventDefault: jest.fn(),
 };
-
+const email = 'info@test.com';
+const password = '123abc';
 const error = { message: 'some error' };
 
 beforeEach(() => {
@@ -23,8 +24,8 @@ describe('SignInPageContainer Tests', () => {
     it('handleSubmit success', () => {
         const state = {
             ...INITIAL_STATE,
-            email: 'info@test.com',
-            password: '123abc',
+            email,
+            password,
         };
         const props = {
             firebase: {
@@ -51,8 +52,8 @@ describe('SignInPageContainer Tests', () => {
     it('handleSubmit failure', () => {
         const state = {
             ...INITIAL_STATE,
-            email: 'info@test.com',
-            password: '123abc',
+            email,
+            password,
         };
         const props = {
             firebase: {
@@ -93,7 +94,7 @@ describe('SignInPageContainer Tests', () => {
     it('isInvalid returns true when email is an empty string and password contains a value', () => {
         const state = {
             ...INITIAL_STATE,
-            password: '123abc',
+            password,
         };
         const theContainer = new SignInPageContainerTest();
         theContainer.state = state;
@@ -102,7 +103,7 @@ describe('SignInPageContainer Tests', () => {
     it('isInvalid returns true when email contains a value and password is an empty string', () => {
         const state = {
             ...INITIAL_STATE,
-            email: 'info@test.com',
+            email,
         };
         const theContainer = new SignInPageContainerTest();
         theContainer.state = state;
@@ -111,8 +112,8 @@ describe('SignInPageContainer Tests', () => {
     it('isInvalid returns false when email and password contain a value', () => {
         const state = {
             ...INITIAL_STATE,
-            email: 'info@test.com',
-            password: '123abc',
+            email,
+            password,
         };
         const theContainer = new SignInPageContainerTest();
         theContainer.state = state;
@@ -122,8 +123,8 @@ describe('SignInPageContainer Tests', () => {
     it('render', () => {
         const state = {
             ...INITIAL_STATE,
-            email: 'info@test.com',
-            password: '123abc',
+            email,
+            password,
             error,
         };
         const theContainer = new SignInPageContainerTest();
