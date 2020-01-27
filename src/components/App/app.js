@@ -9,7 +9,7 @@ import SignUpPageContainer from '../SignUp/SignUpPageContainer';
 import SignInPageContainer from '../SignIn/SignInPageContainer';
 import PasswordForgetPage from '../PasswordForget/passwordForget';
 import DashboardPage from '../Dashboard/dashboard';
-import SettingsPage from '../Settings/settings';
+import SettingsPage from '../Settings/SettingsPage';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session/session';
 
