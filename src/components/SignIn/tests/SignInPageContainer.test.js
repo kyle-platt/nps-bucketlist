@@ -46,6 +46,7 @@ describe('SignInPageContainer Tests', () => {
             );
             expect(theContainer.setState).toHaveBeenCalledWith({ ...INITIAL_STATE });
             expect(props.history.push).toHaveBeenCalledWith(ROUTES.DASHBOARD);
+            expect(props.history.push).not.toHaveBeenCalled();
             expect(theContainer.setState).not.toHaveBeenCalledWith({ error });
         });
     });
