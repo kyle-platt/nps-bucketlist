@@ -12,8 +12,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "set CI=true && react-scripts test",
-    "test:coverage": "set CI=true && react-scripts test --coverage",
+    "test": "set CI=true && react-scripts test --coverage",
+    "test:no-coverage": "set CI=true && react-scripts test",
     "eject": "react-scripts eject",
     "update": "ncu -u & npm i",
     "update:list": "ncu"
@@ -36,6 +36,7 @@
   "devDependencies": {
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "firebase-tools": "^7.12.1",
     "react-test-renderer": "^16.12.0"
   }
 }
