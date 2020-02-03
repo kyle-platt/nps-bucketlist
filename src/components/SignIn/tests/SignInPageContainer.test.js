@@ -83,43 +83,6 @@ describe('SignInPageContainer Tests', () => {
         expect(theContainer.setState).toHaveBeenCalledWith({ [event.target.name]: event.target.value });
     });
 
-    it('isInvalid returns true when email and password are empty strings', () => {
-        const state = {
-            ...INITIAL_STATE,
-        };
-        const theContainer = new SignInPageContainerTest();
-        theContainer.state = state;
-        expect(theContainer.isInvalid(state.email, state.password)).toBe(true);
-    });
-    it('isInvalid returns true when email is an empty string and password contains a value', () => {
-        const state = {
-            ...INITIAL_STATE,
-            password,
-        };
-        const theContainer = new SignInPageContainerTest();
-        theContainer.state = state;
-        expect(theContainer.isInvalid(state.email, state.password)).toBe(true);
-    });
-    it('isInvalid returns true when email contains a value and password is an empty string', () => {
-        const state = {
-            ...INITIAL_STATE,
-            email,
-        };
-        const theContainer = new SignInPageContainerTest();
-        theContainer.state = state;
-        expect(theContainer.isInvalid(state.email, state.password)).toBe(true);
-    });
-    it('isInvalid returns false when email and password contain a value', () => {
-        const state = {
-            ...INITIAL_STATE,
-            email,
-            password,
-        };
-        const theContainer = new SignInPageContainerTest();
-        theContainer.state = state;
-        expect(theContainer.isInvalid(state.email, state.password)).toBe(false);
-    });
-
     it('render', () => {
         const state = {
             ...INITIAL_STATE,
@@ -135,7 +98,6 @@ describe('SignInPageContainer Tests', () => {
             error: state.error,
             handleChange: theContainer.handleChange,
             handleSubmit: theContainer.handleSubmit,
-            isInvalid: theContainer.isInvalid(state.email, state.password),
             password: state.password,
         });
     });

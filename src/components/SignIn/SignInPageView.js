@@ -7,7 +7,6 @@ const SignInPageView = ({
     error,
     handleChange,
     handleSubmit,
-    isInvalid,
     password,
 }) => (
     <div className="app-background">
@@ -29,7 +28,7 @@ const SignInPageView = ({
                 placeholder="Password"
             />
             <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
-            <button disabled={isInvalid} type="submit">
+            <button type="submit">
                 Sign In
             </button>
             {
