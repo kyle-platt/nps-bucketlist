@@ -9,7 +9,6 @@ describe('SignInPageView', () => {
     error: null,
     handleChange: () => {},
     handleSubmit: () => {},
-    isInvalid: false,
     password: '123abc',
   };
 

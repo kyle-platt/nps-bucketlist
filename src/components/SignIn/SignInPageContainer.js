@@ -37,8 +37,6 @@ class SignInPageContainer extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  isInvalid = (email, password) => email === '' || password === '';
-
   render() {
     const {
       email,
@@ -52,7 +50,6 @@ class SignInPageContainer extends React.Component {
         error={error}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
-        isInvalid={this.isInvalid(email, password)}
         password={password}
       />
     );
