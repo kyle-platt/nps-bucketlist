@@ -34,7 +34,7 @@ jobs:
             - node_modules
 
       # run tests
-      - run: npm run test:no-coverage
+      - run: npm run test
 
   deploy: # deploy script
     docker:
