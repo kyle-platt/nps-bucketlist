@@ -17,12 +17,12 @@ describe('SignIn Tests', () => {
   it('sign-in is successful and the user is sent to the dashboard', async () => {
     const props = {
       firebase: {
-          doSignInWithEmailAndPassword: jest.fn().mockResolvedValue(),
+        doSignInWithEmailAndPassword: jest.fn().mockResolvedValue(),
       },
       history: {
-          push: jest.fn(),
+        push: jest.fn(),
       },
-  };
+    };
 
     const history = createMemoryHistory();
     const { getByText, getByPlaceholderText } = render(
@@ -52,9 +52,9 @@ describe('SignIn Tests', () => {
     const error = { message: 'Some Error' };
     const props = {
       firebase: {
-          doSignInWithEmailAndPassword: jest.fn().mockRejectedValue(error),
+        doSignInWithEmailAndPassword: jest.fn().mockRejectedValue(error),
       },
-  };
+    };
 
     const history = createMemoryHistory();
     const { getByText } = render(
