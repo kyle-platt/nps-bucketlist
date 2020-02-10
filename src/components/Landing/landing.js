@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withoutAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 
-function Landing() {
+const Landing = () => {
     return (
         <div className="app-background">
             <h1>Landing</h1>
@@ -15,6 +15,6 @@ function Landing() {
             </Link>
         </div>
     );
-}
+};
 
 export default withoutAuthorization()(Landing);
