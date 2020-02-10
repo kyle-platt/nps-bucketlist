@@ -12,6 +12,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint ./src",
     "test": "set CI=true && react-scripts test",
     "test:coverage": "set CI=true && react-scripts test --coverage",
     "eject": "react-scripts eject",
@@ -36,7 +37,12 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
     "firebase-tools": "^7.12.1",
+    "prettier": "^1.19.1",
     "react-test-renderer": "^16.12.0"
   }
 }
