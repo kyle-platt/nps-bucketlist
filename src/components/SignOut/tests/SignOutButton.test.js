@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { SignOutButtonTest } from '../SignOutButton';
+import { SignOutButtonTest } from '../signOutButton';
 
 describe('SignOutButton Tests', () => {
     const defaultProps = {

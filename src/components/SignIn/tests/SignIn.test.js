@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, wait } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history'; // eslint-disable-line import/no-extraneous-dependencies
-import { SignInTest } from '../SignIn';
+import { SignInTest } from '../signIn';
 import * as ROUTES from '../../../constants/routes';
 
 afterEach(cleanup);

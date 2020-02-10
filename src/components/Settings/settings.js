@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignOutButton from '../SignOut/SignOutButton';
+import SignOutButton from '../SignOut/signOutButton';
 import PasswordChangeForm from '../PasswordChange/passwordChange';
 import { AuthUserContext, withAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 
-const SettingsPage = () => (
+const Settings = () => (
     <AuthUserContext.Consumer>
         {authUser => (
             <div className="app-background">
@@ -20,5 +20,4 @@ const SettingsPage = () => (
     </AuthUserContext.Consumer>
 );
 
-export default withAuthorization()(SettingsPage);
-export { SettingsPage as SettingsPageTest };
+export default withAuthorization()(Settings);

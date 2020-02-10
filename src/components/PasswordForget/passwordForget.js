@@ -1,72 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { withoutAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 
-const PasswordForgetPage = () => (
-    <div className="app-background">
-        <Link to={ROUTES.SIGN_IN}>back</Link>
-        <h1>PasswordForget</h1>
-        <PasswordForgetForm />
-    </div>
-);
+const PasswordForget = ({ firebase }) => {
+    const [email, setEmail] = useState('');
+    const [error, setError] = useState(null);
 
-const INITIAL_STATE = {
-    email: '',
-    error: null
-};
-
-class PasswordForgetFormBase extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { ...INITIAL_STATE };
-    }
-
-    onSubmit = event => {
-        const { email } = this.state;
-        const { firebase } = this.props;
+    const handleSubmit = event => {
+        event.preventDefault();
         firebase
             .doPasswordReset(email)
             .then(() => {
-                this.setState({ ...INITIAL_STATE });
+                setEmail('');
+                setError(null);
             })
-            .catch(error => {
-                this.setState({ error });
+            .catch(e => {
+                setError(e);
             });
-        event.preventDefault();
     };
 
-    onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
-    };
-
-    render() {
-        const { email, error } = this.state;
-        const isInvalid = email === '';
-        return (
-            <form onSubmit={this.onSubmit}>
+    return (
+        <div className="app-background">
+            <Link to={ROUTES.SIGN_IN}>back</Link>
+            <h1>Reset Password</h1>
+            <form onSubmit={handleSubmit}>
                 <input
                     name="email"
                     value={email}
-                    onChange={this.onChange}
+                    onChange={event => setEmail(event.target.value)}
                     type="text"
                     placeholder="Email Address"
                 />
-                <button disabled={isInvalid} type="submit">
-                    Reset My Password
-                </button>
+                <button type="submit">Send</button>
                 {error && <p>{error.message}</p>}
             </form>
-        );
-    }
-}
+        </div>
+    );
+};
 
-const PasswordForgetLink = () => (
-    <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
-);
-
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
-
-export default withoutAuthorization()(PasswordForgetPage);
-export { PasswordForgetForm, PasswordForgetLink };
+export default withoutAuthorization()(withFirebase(PasswordForget));
