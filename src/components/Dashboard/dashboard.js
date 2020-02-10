@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuthorization } from '../Session/session';
 import * as ROUTES from '../../constants/routes';
 
-function Dashboard() {
+const Dashboard = () => {
     return (
         <div className="app-background">
             <h1>Bucketlist</h1>
@@ -12,6 +12,6 @@ function Dashboard() {
             </Link>
         </div>
     );
-}
+};
 
 export default withAuthorization()(Dashboard);

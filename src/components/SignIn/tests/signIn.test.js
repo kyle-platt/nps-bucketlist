@@ -3,16 +3,16 @@ import { cleanup, fireEvent, render, wait } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history'; // eslint-disable-line import/no-extraneous-dependencies
-import { SignUpTest } from '../SignUp';
+import { SignInTest } from '../signIn';
 import * as ROUTES from '../../../constants/routes';
 
 afterEach(cleanup);
 
-describe('SignUp Tests', () => {
-    it('sign-up is successful and the user is sent to the dashboard', async () => {
+describe('SignIn Tests', () => {
+    it('sign-in is successful and the user is sent to the dashboard', async () => {
         const props = {
             firebase: {
-                doCreateUserWithEmailAndPassword: jest.fn().mockResolvedValue()
+                doSignInWithEmailAndPassword: jest.fn().mockResolvedValue()
             },
             history: {
                 push: jest.fn()
@@ -22,7 +22,7 @@ describe('SignUp Tests', () => {
         const history = createMemoryHistory();
         const { getByText, getByPlaceholderText } = render(
             <Router history={history}>
-                <SignUpTest {...props} />
+                <SignInTest {...props} />
             </Router>
         );
 
@@ -36,37 +36,30 @@ describe('SignUp Tests', () => {
         fireEvent.change(passwordInput, { target: { value: 'abc123' } });
         expect(passwordInput.value).toBe('abc123');
 
-        const confirmPasswordInput = getByPlaceholderText('Confirm Password');
-        expect(confirmPasswordInput.value).toBe('');
-        fireEvent.change(confirmPasswordInput, { target: { value: 'abc123' } });
-        expect(confirmPasswordInput.value).toBe('abc123');
-
-        const signUpButton = getByText('Sign Up');
-        fireEvent.click(signUpButton);
+        const signInButton = getByText('Sign In');
+        fireEvent.click(signInButton);
         await wait(() => {
             expect(props.history.push).toHaveBeenCalledWith(ROUTES.DASHBOARD);
         });
     });
 
-    it('sign-up fails and an error message is rendered', async () => {
+    it('sign-in fails and an error message is rendered', async () => {
         const error = { message: 'Some Error' };
         const props = {
             firebase: {
-                doCreateUserWithEmailAndPassword: jest
-                    .fn()
-                    .mockRejectedValue(error)
+                doSignInWithEmailAndPassword: jest.fn().mockRejectedValue(error)
             }
         };
 
         const history = createMemoryHistory();
         const { getByText } = render(
             <Router history={history}>
-                <SignUpTest {...props} />
+                <SignInTest {...props} />
             </Router>
         );
 
-        const signUpButton = getByText('Sign Up');
-        fireEvent.click(signUpButton);
+        const signInButton = getByText('Sign In');
+        fireEvent.click(signInButton);
         await wait(() => {
             expect(getByText('Some Error')).toBeInTheDocument();
         });
