@@ -5,16 +5,14 @@ import { SignOutButtonTest } from '../SignOutButton';
 describe('SignOutButton Tests', () => {
     const defaultProps = {
         firebase: {
-            doSignOut: () => {},
+            doSignOut: () => {}
         }
     };
 
     it('renders with some data', () => {
-        const tree = renderer.create(
-            <SignOutButtonTest
-                {...defaultProps}
-            />
-        ).toJSON();
+        const tree = renderer
+            .create(<SignOutButtonTest {...defaultProps} />)
+            .toJSON();
         expect(tree).toMatchSnapshot();
     });
 });
